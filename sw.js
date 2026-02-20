@@ -1,24 +1,19 @@
-const cacheName = 'age-app-v1';
-const assets = [
+const CACHE_NAME = '-my_age_v1';
+const urlsToCache = [
   './',
   './index.html',
-  'https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;600&display=swap'
+  'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap',
+  'https://fonts.googleapis.com/icon?family=Material+Icons'
 ];
 
-// ফাইলগুলো ক্যাশ করা
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(cacheName).then(cache => {
-      cache.addAll(assets);
-    })
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
 });
 
-// অফলাইনে ফাইলগুলো পরিবেশন করা
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(res => {
-      return res || fetch(e.request);
-    })
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => response || fetch(event.request))
   );
 });
