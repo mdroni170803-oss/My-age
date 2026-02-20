@@ -276,5 +276,16 @@
         // পেজ লোড হবার সাথে সাথেই যেন জিরো না দেখায় তাই ফাংশনটি একবার কল করা হলো
         updateAgeApp();
     </script>
+    <link rel="manifest" href="manifest.json">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker Registered'))
+        .catch(err => console.log('Service Worker Error', err));
+    });
+  }
+</script>
 </body>
 </html>
