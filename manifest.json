@@ -1,6 +1,6 @@
 {
-  "name": "BIOM Courses ",
-  "short_name": "BIOM",
+  "name": "My Age ",
+  "short_name": "My Age",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",
